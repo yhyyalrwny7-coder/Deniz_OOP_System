@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Deniz OOP Learning System — Istanbul Gelisim Universitesi</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="prof-banner" id="prof-banner">
+  <span class="banner-pin">&#128204;</span>
+  <div>
+    <div class="banner-title">Important Note from Prof. Dr. Deniz DAHMAN'</div>
+    <div class="banner-sub">Click to read &#8212; Don't miss this message</div>
+  </div>
+  <span class="banner-arrow">&#8594;</span>
+</div>
+
+<div class="container">
+
+  <div class="header">
+    <div class="header-tag">OOP with Python &middot; Fall 2025 &middot; Istanbul Gelisim Universitesi</div>
+    <h1>Deniz OOP <span>Learning</span> System</h1>
+    <p>Interactive demonstration of Object-Oriented Programming concepts in Python</p>
+    <div class="team">
+      <span class="team-badge t1">Yahya</span>
+      <span class="team-badge t2">Abdelhady</span>
+      <span class="team-badge t3">Layla</span>
+    </div>
+  </div>
+
+  <div class="explain">
+    <strong>What is OOP?</strong> Object-Oriented Programming means we model code like real life &#8212; everything is an <strong>object</strong>. Python supports all classic OOP pillars <strong>plus</strong> unique features like decorators, name mangling, and multiple inheritance. This system demonstrates <strong>12 OOP concepts interactively</strong>.
+  </div>
+  <div class="explain" style="margin-bottom:10px;text-align:center;">
+    <strong>&#128071; These 12 boxes light up every time a concept is triggered</strong> &#8212; a <strong>Quick Quiz</strong> also appears in the log after each action.
+  </div>
+
+  <div class="concepts" style="margin-bottom:20px;">
+    <div class="concept-box enc" id="box-enc"><div class="concept-icon">&#128274;</div><div class="concept-name">Encapsulation</div><div class="concept-desc">Private attrs via name mangling self.__attr</div></div>
+    <div class="concept-box inh" id="box-inh"><div class="concept-icon">&#129516;</div><div class="concept-name">Inheritance</div><div class="concept-desc">UnderGrad &amp; PostGrad inherit from Student</div></div>
+    <div class="concept-box pol" id="box-pol"><div class="concept-icon">&#128256;</div><div class="concept-name">Polymorphism</div><div class="concept-desc">calculate_fee() returns different result per type</div></div>
+    <div class="concept-box abs" id="box-abs"><div class="concept-icon">&#128208;</div><div class="concept-name">Abstraction</div><div class="concept-desc">@abstractmethod forces subclasses to implement study()</div></div>
+    <div class="concept-box dec" id="box-dec"><div class="concept-icon">&#127912;</div><div class="concept-name">Decorator</div><div class="concept-desc">@property turns method into attribute accessor</div></div>
+    <div class="concept-box ovr" id="box-ovr"><div class="concept-icon">&#128260;</div><div class="concept-name">Override</div><div class="concept-desc">Subclass redefines parent method with new behavior</div></div>
+    <div class="concept-box sup" id="box-sup"><div class="concept-icon">&#9889;</div><div class="concept-name">super()</div><div class="concept-desc">Calls parent class __init__ from inside child class</div></div>
+    <div class="concept-box con" id="box-con"><div class="concept-icon">&#127959;&#65039;</div><div class="concept-name">Constructor</div><div class="concept-desc">__init__ runs automatically when object is created</div></div>
+    <div class="concept-box cvi" id="box-cvi"><div class="concept-icon">&#128230;</div><div class="concept-name">Class vs Instance</div><div class="concept-desc">Class vars shared by all; instance vars unique per object</div></div>
+    <div class="concept-box str" id="box-str"><div class="concept-icon">&#128424;&#65039;</div><div class="concept-name">__str__</div><div class="concept-desc">Returns human-readable string when print() is called</div></div>
+    <div class="concept-box ins" id="box-ins"><div class="concept-icon">&#128269;</div><div class="concept-name">isinstance()</div><div class="concept-desc">Checks if object belongs to a class or its parents</div></div>
+    <div class="concept-box mul" id="box-mul"><div class="concept-icon">&#128279;</div><div class="concept-name">Multi-Inheritance</div><div class="concept-desc">A class can inherit from more than one parent class</div></div>
+  </div>
+
+  <div class="grid">
+    <div style="display:flex;flex-direction:column;gap:20px;">
+
+      <div class="panel">
+        <div class="panel-title">Students &#8212; Python Objects</div>
+        <div class="explain green">
+          <strong>Class &amp; Object:</strong> Each student is a real <strong>object in memory</strong> created from the <strong>UnderGrad</strong> class, which inherits from the abstract <strong>Student</strong> base class.
+        </div>
+        <div id="student-list"></div>
+        <div class="explain" style="margin-top:10px;margin-bottom:10px;">
+          <strong>+ Add Student</strong> = writing <strong>UnderGrad("name","id","major",gpa)</strong> in Python. <strong>__init__</strong> runs automatically.
+        </div>
+        <button class="btn btn-primary" onclick="openAddModal()">+ Add Student &#8212; Create New Object</button>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">Test Encapsulation &#8212; set_gpa()</div>
+        <div class="explain">
+          <strong>Encapsulation:</strong> GPA is stored as <strong>self.__gpa</strong> &#8212; double underscore = private via <strong>name mangling</strong>. Only <strong>set_gpa()</strong> can change it, and it validates first. Try a number above 4.0!
+        </div>
+        <div class="form-group" style="margin-top:10px;">
+          <label>Enter any GPA value to test set_gpa()</label>
+          <div class="test-row">
+            <input type="number" id="test-gpa" placeholder="Try 5.0 or 3.5" step="0.1"/>
+            <button class="btn btn-secondary" style="width:auto;padding:8px 16px;margin:0;" onclick="runTestGpa()">Test</button>
+          </div>
+        </div>
+        <div id="gpa-result" style="font-family:var(--mono);font-size:12px;margin-top:8px;display:none;padding:8px 12px;border-radius:6px;"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">Test isinstance()</div>
+        <div class="explain">
+          <strong>isinstance(obj, Class)</strong> checks if an object is an instance of a class <strong>or any of its parents</strong>. Because UnderGrad inherits from Student, <strong>isinstance(yahya, Student) is True</strong> too!
+        </div>
+        <div class="form-group" style="margin-top:10px;">
+          <label>Select a student</label>
+          <select id="isinstance-student"></select>
+        </div>
+        <button class="btn btn-secondary" style="margin-top:6px;" onclick="runIsinstance()">&#9654; Run isinstance() checks</button>
+        <div id="isinstance-result" style="margin-top:10px;"></div>
+      </div>
+
+    </div>
+
+    <div class="right">
+
+      <div class="panel" style="padding:0;">
+        <div style="padding:16px 20px 0 20px;">
+          <div class="panel-title">Student Details &#8212; Object State</div>
+          <div class="explain green">
+            <strong>Inheritance in action:</strong> All attributes shown come from the <strong>Student base class</strong>. <strong>study()</strong> and <strong>calculate_fee()</strong> are overridden in each subclass (Override + Polymorphism).
+          </div>
+        </div>
+        <div style="padding:0 20px 20px 20px;">
+          <div id="detail-panel">
+            <div class="empty-state">
+              <div class="empty-icon">&#128070;</div>
+              <div>Click any student on the left to see their object state</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="action-panel" style="display:none;">
+        <div class="panel-title">Actions &#8212; Click to Trigger OOP Concepts</div>
+        <div class="explain purple">
+          <strong>Each button triggers a different OOP concept.</strong> The matching box lights up at the top, the Log explains what happened in Python, and a <strong>Quick Quiz</strong> tests your understanding!
+        </div>
+        <div class="action-group-label">&#9679; Core 4 Pillars</div>
+        <div class="actions">
+          <button class="action-btn" onclick="showFee()">&#128176; calculate_fee()<br><span style="color:var(--muted);font-size:10px;">Polymorphism &#128256;</span></button>
+          <button class="action-btn" onclick="showStudy()">&#128218; study()<br><span style="color:var(--muted);font-size:10px;">Abstraction &#128208;</span></button>
+          <button class="action-btn" onclick="showInheritance()">&#129516; Inheritance<br><span style="color:var(--muted);font-size:10px;">Base class methods</span></button>
+          <button class="action-btn" onclick="showEncapsulation()">&#128274; get_name()<br><span style="color:var(--muted);font-size:10px;">Encapsulation &#128274;</span></button>
+        </div>
+        <div class="action-group-label">&#9679; Python Features</div>
+        <div class="actions">
+          <button class="action-btn" onclick="showDecorator()">&#127912; @property<br><span style="color:var(--muted);font-size:10px;">Decorator &#127912;</span></button>
+          <button class="action-btn" onclick="showOverride()">&#128260; Override<br><span style="color:var(--muted);font-size:10px;">Redefine method</span></button>
+          <button class="action-btn" onclick="showSuper()">&#9889; super()<br><span style="color:var(--muted);font-size:10px;">Call parent &#9889;</span></button>
+          <button class="action-btn" onclick="showConstructor()">&#128736;&#65039; __init__<br><span style="color:var(--muted);font-size:10px;">Constructor</span></button>
+        </div>
+        <div class="action-group-label">&#9679; Advanced Python OOP</div>
+        <div class="actions">
+          <button class="action-btn" onclick="showClassVsInstance()">&#128230; Class var<br><span style="color:var(--muted);font-size:10px;">Class vs Instance</span></button>
+          <button class="action-btn" onclick="showStr()">&#128424;&#65039; __str__<br><span style="color:var(--muted);font-size:10px;">print(object)</span></button>
+          <button class="action-btn" onclick="showIsinstance()">&#128269; isinstance()<br><span style="color:var(--muted);font-size:10px;">Check type &#128269;</span></button>
+          <button class="action-btn" onclick="showMultiInheritance()">&#128279; Multi-Inherit<br><span style="color:var(--muted);font-size:10px;">Two parents &#128279;</span></button>
+        </div>
+      </div>
+
+      <div class="log-panel">
+        <div class="panel-title" style="margin-bottom:10px;">System Log &#8212; Live Python Output</div>
+        <div class="explain yellow" style="margin-bottom:12px;">
+          <strong>Real-time OOP log:</strong> Every action explained in Python terms. <strong>Yellow quiz entries</strong> appear after each concept &#8212; click an answer to test yourself!
+        </div>
+        <div class="log-title"><div class="log-dot"></div> Live Output</div>
+        <div class="log-entries" id="log"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="margin-top:20px;">
+    <div class="panel">
+      <div class="panel-title">DahmanCourse &#8212; Class &amp; Object Relationship</div>
+      <div class="explain green">
+        <strong>Class &amp; Object:</strong> <strong>DahmanCourse</strong> is a separate class from Student with its own attributes and methods. This shows how real OOP systems are built from <strong>multiple objects working together</strong>.
+      </div>
+      <div style="margin-top:14px;" class="course-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+          <div class="course-name">Object-Oriented Programming with Python</div>
+          <span class="s-type ug">3 CREDITS</span>
+        </div>
+        <div class="course-prof">&#128104;&#8205;&#127979; Prof. Dr. Deniz DAHMAN'</div>
+        <div class="course-meta">Istanbul Gelisim Universitesi &nbsp;&middot;&nbsp; Fall 2025</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:8px;">Enrolled Students:</div>
+        <div class="enrolled-list" id="enrolled-list">
+          <span class="enrolled-badge">Yahya</span>
+          <span class="enrolled-badge">Abdelhady</span>
+          <span class="enrolled-badge">Layla</span>
+        </div>
+      </div>
+      <div class="explain" style="margin-top:12px;">
+        <strong>Enroll a student:</strong> Select a student from the left first, then click the button below.
+      </div>
+      <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;">
+        <button class="enroll-btn" onclick="enrollSelected()">+ Enroll Selected Student</button>
+        <button class="enroll-btn" style="border-color:var(--red);color:var(--red);" onclick="toggleCourseCode()">&#128013; Show DahmanCourse.py</button>
+      </div>
+      <div id="course-code" style="display:none;margin-top:14px;">
+        <div class="explain yellow"><strong>DahmanCourse.py &#8212; the Python class behind this section:</strong></div>
+        <div class="code-block"><span style="color:#ff7b72;">class</span> <span style="color:#79c0ff;">DahmanCourse</span>:
+
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">__init__</span>(<span style="color:#ff7b72;">self</span>, course_name, credits, professor):
+        <span style="color:#ff7b72;">self</span>.__course_name = course_name
+        <span style="color:#ff7b72;">self</span>.__credits    = credits
+        <span style="color:#ff7b72;">self</span>.__professor  = professor
+        <span style="color:#ff7b72;">self</span>.__enrolled   = []
+
+    <span style="color:#ffa657;">@property</span>
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">course_name</span>(<span style="color:#ff7b72;">self</span>):
+        <span style="color:#ff7b72;">return</span> <span style="color:#ff7b72;">self</span>.__course_name
+
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">enroll</span>(<span style="color:#ff7b72;">self</span>, student):
+        <span style="color:#ff7b72;">self</span>.__enrolled.append(student)
+
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">__str__</span>(<span style="color:#ff7b72;">self</span>):
+        <span style="color:#ff7b72;">return</span> <span style="color:#a5d6ff;">f"Course: {self.__course_name} | Prof: {self.__professor}"</span>
+
+
+oop_course = DahmanCourse(<span style="color:#a5d6ff;">"OOP with Python"</span>, <span style="color:#79c0ff;">3</span>, <span style="color:#a5d6ff;">"Prof. Dr. Deniz DAHMAN'"</span>)
+<span style="color:#ffa657;">print</span>(oop_course)  <span style="color:#555e6e;"># Course: OOP with Python | Prof: Prof. Dr. Deniz DAHMAN'</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;">
+    <div class="panel">
+      <div class="panel-title">Full Python Class Hierarchy &#8212; Click Tabs to Explore</div>
+      <div class="explain purple">
+        <strong>Complete class structure:</strong> All 12 OOP concepts are implemented in these files.
+      </div>
+      <div class="tabs" style="margin-top:12px;">
+        <button class="tab-btn active" onclick="switchTab('tab-student',this)">student.py</button>
+        <button class="tab-btn" onclick="switchTab('tab-undergrad',this)">undergrad_student.py</button>
+        <button class="tab-btn" onclick="switchTab('tab-postgrad',this)">postgrad_student.py</button>
+        <button class="tab-btn" onclick="switchTab('tab-multi',this)">ai_student.py</button>
+      </div>
+      <div id="tab-student" class="tab-content active">
+        <div class="code-block"><span style="color:#ff7b72;">from</span> abc <span style="color:#ff7b72;">import</span> ABC, abstractmethod
+
+<span style="color:#ff7b72;">class</span> <span style="color:#79c0ff;">Student</span>(ABC):
+
+    university    = <span style="color:#a5d6ff;">"Istanbul Gelisim Universitesi"</span>  <span style="color:#555e6e;"># Class Variable</span>
+    student_count = <span style="color:#79c0ff;">0</span>
+
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">__init__</span>(<span style="color:#ff7b72;">self</span>, name, student_id, gpa):
+        <span style="color:#ff7b72;">self</span>.__name       = name        <span style="color:#555e6e;"># private — Encapsulation</span>
+        <span style="color:#ff7b72;">self</span>.__student_id = student_id
+        <span style="color:#ff7b72;">self</span>.__gpa        = <span style="color:#79c0ff;">0.0</span>
+        <span style="color:#ff7b72;">self</span>.set_gpa(gpa)
+        Student.student_count += <span style="color:#79c0ff;">1</span>
+
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">get_name</span>(<span style="color:#ff7b72;">self</span>):       <span style="color:#ff7b72;">return</span> <span style="color:#ff7b72;">self</span>.__name
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">get_student_id</span>(<span style="color:#ff7b72;">self</span>): <span style="color:#ff7b72;">return</span> <span style="color:#ff7b72;">self</span>.__student_id
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">get_gpa</span>(<span style="color:#ff7b72;">self</span>):       <span style="color:#ff7b72;">return</span> <span style="color:#ff7b72;">self</span>.__gpa
+
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">set_gpa</span>(<span style="color:#ff7b72;">self</span>, gpa):
+        <span style="color:#ff7b72;">if</span> <span style="color:#79c0ff;">0.0</span> &lt;= gpa &lt;= <span style="color:#79c0ff;">4.0</span>:
+            <span style="color:#ff7b72;">self</span>.__gpa = gpa
+        <span style="color:#ff7b72;">else</span>:
+            <span style="color:#ff7b72;">raise</span> ValueError(<span style="color:#a5d6ff;">"GPA must be between 0.0 and 4.0"</span>)
+
+    <span style="color:#ffa657;">@property</span>
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">info</span>(<span style="color:#ff7b72;">self</span>): <span style="color:#ff7b72;">return</span> <span style="color:#a5d6ff;">f"{self.__name} | {self.__student_id}"</span>
+
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">__str__</span>(<span style="color:#ff7b72;">self</span>): <span style="color:#ff7b72;">return</span> <span style="color:#a5d6ff;">f"Student({self.__name}, GPA: {self.__gpa})"</span>
+
+    <span style="color:#ffa657;">@abstractmethod</span>
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">study</span>(<span style="color:#ff7b72;">self</span>): <span style="color:#ff7b72;">pass</span>
+
+    <span style="color:#ffa657;">@abstractmethod</span>
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">calculate_fee</span>(<span style="color:#ff7b72;">self</span>): <span style="color:#ff7b72;">pass</span></div>
+      </div>
+      <div id="tab-undergrad" class="tab-content">
+        <div class="code-block"><span style="color:#ff7b72;">class</span> <span style="color:#79c0ff;">UnderGrad</span>(Student):   <span style="color:#555e6e;"># Inheritance</span>
+
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">__init__</span>(<span style="color:#ff7b72;">self</span>, name, student_id, major, gpa):
+        <span style="color:#ffa657;">super</span>().__init__(name, student_id, gpa)   <span style="color:#555e6e;"># super()</span>
+        <span style="color:#ff7b72;">self</span>.__major = major
+
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">get_major</span>(<span style="color:#ff7b72;">self</span>): <span style="color:#ff7b72;">return</span> <span style="color:#ff7b72;">self</span>.__major
+
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">study</span>(<span style="color:#ff7b72;">self</span>):            <span style="color:#555e6e;"># Override + Abstraction</span>
+        <span style="color:#ff7b72;">return</span> <span style="color:#a5d6ff;">"Reading textbooks and attending lectures"</span>
+
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">calculate_fee</span>(<span style="color:#ff7b72;">self</span>):    <span style="color:#555e6e;"># Override + Polymorphism</span>
+        <span style="color:#ff7b72;">return</span> <span style="color:#79c0ff;">3500</span>
+
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">__str__</span>(<span style="color:#ff7b72;">self</span>):
+        <span style="color:#ff7b72;">return</span> <span style="color:#a5d6ff;">f"UnderGrad({self.get_name()}, Major: {self.__major})"</span>
+
+yahya     = UnderGrad(<span style="color:#a5d6ff;">"Yahya"</span>,     <span style="color:#a5d6ff;">"250418770"</span>, <span style="color:#a5d6ff;">"AI &amp; Data Science"</span>,    <span style="color:#79c0ff;">3.85</span>)
+abdelhady = UnderGrad(<span style="color:#a5d6ff;">"Abdelhady"</span>, <span style="color:#a5d6ff;">"250418771"</span>, <span style="color:#a5d6ff;">"Artificial Intelligence"</span>, <span style="color:#79c0ff;">3.70</span>)
+layla     = UnderGrad(<span style="color:#a5d6ff;">"Layla"</span>,     <span style="color:#a5d6ff;">"250418772"</span>, <span style="color:#a5d6ff;">"Software Engineering"</span>,   <span style="color:#79c0ff;">3.92</span>)</div>
+      </div>
+      <div id="tab-postgrad" class="tab-content">
+        <div class="code-block"><span style="color:#ff7b72;">class</span> <span style="color:#79c0ff;">PostGrad</span>(Student):   <span style="color:#555e6e;"># Inheritance</span>
+
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">__init__</span>(<span style="color:#ff7b72;">self</span>, name, student_id, research_topic, gpa):
+        <span style="color:#ffa657;">super</span>().__init__(name, student_id, gpa)
+        <span style="color:#ff7b72;">self</span>.__research_topic = research_topic
+
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">get_research_topic</span>(<span style="color:#ff7b72;">self</span>): <span style="color:#ff7b72;">return</span> <span style="color:#ff7b72;">self</span>.__research_topic
+
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">study</span>(<span style="color:#ff7b72;">self</span>):
+        <span style="color:#ff7b72;">return</span> <span style="color:#a5d6ff;">"Writing research papers and conducting experiments"</span>
+
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">calculate_fee</span>(<span style="color:#ff7b72;">self</span>):
+        <span style="color:#ff7b72;">return</span> <span style="color:#79c0ff;">6500</span>
+
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">__str__</span>(<span style="color:#ff7b72;">self</span>):
+        <span style="color:#ff7b72;">return</span> <span style="color:#a5d6ff;">f"PostGrad({self.get_name()}, Research: {self.__research_topic})"</span></div>
+      </div>
+      <div id="tab-multi" class="tab-content">
+        <div class="code-block"><span style="color:#555e6e;"># Multiple Inheritance — Python exclusive!</span>
+
+<span style="color:#ff7b72;">class</span> <span style="color:#79c0ff;">Researcher</span>:
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">conduct_research</span>(<span style="color:#ff7b72;">self</span>):
+        <span style="color:#ff7b72;">return</span> <span style="color:#a5d6ff;">"Conducting AI/ML research..."</span>
+
+<span style="color:#ff7b72;">class</span> <span style="color:#79c0ff;">AIStudent</span>(UnderGrad, Researcher):  <span style="color:#555e6e;"># inherits from BOTH</span>
+    <span style="color:#ffa657;">def</span> <span style="color:#d2a8ff;">__init__</span>(<span style="color:#ff7b72;">self</span>, name, student_id, major, gpa):
+        <span style="color:#ffa657;">super</span>().__init__(name, student_id, major, gpa)
+
+yahya = AIStudent(<span style="color:#a5d6ff;">"Yahya"</span>, <span style="color:#a5d6ff;">"250418770"</span>, <span style="color:#a5d6ff;">"AI &amp; Data Science"</span>, <span style="color:#79c0ff;">3.85</span>)
+
+<span style="color:#ffa657;">print</span>(<span style="color:#ffa657;">isinstance</span>(yahya, AIStudent))   <span style="color:#555e6e;"># True</span>
+<span style="color:#ffa657;">print</span>(<span style="color:#ffa657;">isinstance</span>(yahya, UnderGrad))   <span style="color:#555e6e;"># True</span>
+<span style="color:#ffa657;">print</span>(<span style="color:#ffa657;">isinstance</span>(yahya, Researcher))  <span style="color:#555e6e;"># True</span>
+<span style="color:#ffa657;">print</span>(<span style="color:#ffa657;">isinstance</span>(yahya, Student))     <span style="color:#555e6e;"># True — full chain!</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div style="font-size:22px;margin-bottom:12px;">&#127891;</div>
+    <div class="footer-made">Made by <span>YAHYA ALRAWNI</span></div>
+    <div class="footer-super" style="margin-top:8px;">Under the supervision of <span>Prof. Dr. Deniz DAHMAN'</span></div>
+    <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:8px;letter-spacing:1px;">Istanbul Gelisim Universitesi &middot; OOP with Python &middot; Fall 2025</div>
+  </div>
+
+</div>
+
+<!-- PROFESSOR NOTE MODAL -->
+<div class="modal-overlay" id="note-modal">
+  <div class="modal" style="border-color:rgba(245,158,11,0.35);">
+    <button class="modal-close" onclick="closeNoteModal()">&#10005;</button>
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+      <span style="font-size:36px;">&#128204;</span>
+      <div>
+        <div class="modal-title">Note from Your Professor</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--warn);margin-top:4px;">Prof. Dr. Deniz DAHMAN' &middot; OOP with Python &middot; Fall 2025</div>
+      </div>
+    </div>
+    <div class="prof-quote">"Every great engineer once sat where you sit now. The difference between them and the rest? They refused to leave until they understood. This subject is your first test &#8212; don't walk away from it."</div>
+    <div class="prof-sig">&#8212; Prof. Dr. Deniz DAHMAN'</div>
+    <div style="margin-top:24px;">
+      <button class="btn btn-primary" onclick="closeNoteModal()">I understand &#8212; Let's learn OOP</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD STUDENT MODAL -->
+<div class="modal-overlay" id="add-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">&#10005;</button>
+    <div class="modal-title">Add New Student Object</div>
+    <div class="explain" style="margin-top:10px;margin-bottom:16px;">
+      <strong>Object Creation:</strong> Filling this form = writing <strong>UnderGrad("name","id","major",gpa)</strong> in Python. <strong>__init__</strong> runs automatically, <strong>set_gpa()</strong> validates (Encapsulation), object inherits all Student methods.
+    </div>
+    <div class="form-group"><label>Full Name</label><input type="text" id="m-name" placeholder="e.g. Sara"/></div>
+    <div class="form-group"><label>Student ID</label><input type="text" id="m-id" placeholder="e.g. 250418773"/></div>
+    <div class="form-group">
+      <label>Student Type</label>
+      <select id="m-type" onchange="updateExtraLabel()">
+        <option value="ug">UnderGrad &#8212; extends Student, has major</option>
+        <option value="pg">PostGrad &#8212; extends Student, has research topic</option>
+      </select>
+    </div>
+    <div class="form-group"><label id="m-extra-label">Major</label><input type="text" id="m-extra" placeholder="e.g. Software Engineering"/></div>
+    <div class="form-group"><label>GPA (0.0 &#8212; 4.0) &#8212; set_gpa() will validate this</label><input type="number" id="m-gpa" placeholder="e.g. 3.5" step="0.1" min="0" max="4"/></div>
+    <button class="btn btn-primary" onclick="addStudent()">Create Object &#8212; UnderGrad(...)</button>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
